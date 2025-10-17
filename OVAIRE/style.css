@@ -477,3 +477,18 @@ a {
         min-width: 0;
     }
 }
+
+/* Estilos para la sección de contacto (mejor contraste y legibilidad) */
+.contacto {
+    text-align: center;
+    padding: 18px 12px;
+    color: #ffffff; /* texto principal en blanco para contraste sobre el fondo oscuro */
+    font-size: 18px;
+}
+.contacto a {
+    color: #50D9E5; /* color acento consistente con la paleta del sitio */
+    text-decoration: underline;
+}
+.contacto a:hover {
+    color: #2aa8b4;
+}
