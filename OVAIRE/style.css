@@ -8,29 +8,36 @@
     opacity: 0.6;
     transition: opacity 0.2s, border 0.2s;
 }
+
 .problema-carousel .carousel-thumbnails img.active {
     opacity: 1;
     border: 2px solid #111;
 }
+
 .problema-carousel .carousel-item video {
     width: 100%;
-    height: 400px;
+    height: 100%;
+    /* Llenar completamente el contenedor del carrusel */
     border-radius: 16px;
     background: #000;
-    object-fit: contain;
+    object-fit: cover;
+    /* cubrir totalmente el recuadro blanco (se recorta si es necesario) */
     box-shadow: none;
     border: none;
+    display: block;
 }
 
 @media (max-width: 768px) {
     .problema-carousel .carousel-item video {
-        height: 300px;
+        height: 100%;
+        object-fit: cover;
     }
 }
 
 @media (max-width: 480px) {
     .problema-carousel .carousel-item video {
-        height: 250px;
+        height: 100%;
+        object-fit: cover;
     }
 }
 
@@ -56,7 +63,8 @@ a {
     margin-bottom: 30px;
 }
 
-.title-animated , .desplazamiento{
+.title-animated,
+.desplazamiento {
     animation: shine 2.5s infinite linear;
     font-size: 3em;
     font-weight: bold;
@@ -83,7 +91,8 @@ a {
         background-position: 0% 50%;
     }
 }
-.logo-ovaire{
+
+.logo-ovaire {
     width: 350px;
 }
 
@@ -117,7 +126,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 @media (max-width: 600px) {
@@ -129,12 +138,13 @@ a {
     }
 }
 
-.desplazamiento{
+.desplazamiento {
     font-size: 1.5em;
     margin-left: auto;
     border-right-style: solid;
     margin-right: auto;
 }
+
 .descripcion {
     display: flex;
     flex-direction: row;
@@ -151,6 +161,7 @@ a {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -198,7 +209,7 @@ a {
     flex-direction: column;
     align-items: center;
     max-width: 500px;
-    
+
 }
 
 .descripcion h2 {
@@ -213,7 +224,8 @@ a {
     font-size: 18px;
 }
 
-.descripcion .quienes-somos, .descripcion .que-hacemos {
+.descripcion .quienes-somos,
+.descripcion .que-hacemos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -237,10 +249,13 @@ a {
         padding-bottom: 20px;
         align-items: stretch;
     }
-    .descripcion .quienes-somos, .descripcion .que-hacemos {
+
+    .descripcion .quienes-somos,
+    .descripcion .que-hacemos {
         max-width: 100%;
         align-items: center;
     }
+
     .descripcion p {
         font-size: 20px;
     }
@@ -297,7 +312,7 @@ a {
         max-width: 90%;
         margin: 15px auto;
     }
-    
+
     .lista-entidades li {
         font-size: 1em;
     }
@@ -344,7 +359,7 @@ a {
     width: 100%;
     height: auto;
     border-radius: 16px;
-    box-shadow: 2px 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
     border: 2px solid #50D9E5;
 }
@@ -354,6 +369,7 @@ a {
         max-width: 90vw;
     }
 }
+
 /*final estilos para la sección Nuestro proceso*/
 
 /* Carrusel Encuestas */
@@ -368,6 +384,7 @@ a {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 .carousel-thumbnails {
     display: flex;
     justify-content: center;
@@ -375,6 +392,7 @@ a {
     margin-top: 10px;
     padding-bottom: 8px;
 }
+
 .carousel-thumbnails img {
     width: 55px;
     height: 40px;
@@ -385,10 +403,12 @@ a {
     opacity: 0.6;
     transition: opacity 0.2s, border 0.2s;
 }
+
 .carousel-thumbnails img.active {
     opacity: 1;
     border: 2px solid #111;
 }
+
 .carousel {
     position: relative;
     width: 100%;
@@ -396,35 +416,97 @@ a {
     margin: 0 auto;
     overflow: hidden;
     border-radius: 16px;
-    box-shadow: 2px 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
+    aspect-ratio: 4/3;
+    /* Mantiene una proporción consistente */
+    touch-action: pan-y pinch-zoom;
+    /* Mejora la interacción táctil */
+    display: block;
+    height: auto;
 }
 
 @media (max-width: 768px) {
+    .proceso-img-container {
+        grid-template-columns: 1fr;
+        /* Una columna en móviles */
+        gap: 30px;
+        padding: 15px;
+    }
+
     .carousel {
-        max-width: 95%;
+        max-width: 100%;
+        margin: 0 auto;
     }
-    
+
+    .carousel img {
+        height: auto;
+        /* Altura automática basada en el aspect-ratio */
+        max-height: 80vh;
+        /* Máximo 80% de la altura de la pantalla */
+        width: 100%;
+        object-fit: contain;
+    }
+
     .carousel-control {
-        padding: 5px;
-        font-size: 1.5em;
-    }
-    
-    .carousel-thumbnails {
-        padding: 5px;
-        gap: 5px;
-    }
-    
-    .carousel-thumbnails img {
+        padding: 12px;
+        font-size: 1.2em;
+        background: rgba(80, 217, 229, 0.8);
         width: 40px;
-        height: 30px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-title {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+
+
+    /* Mejora en los controles táctiles */
+    .carousel-control.prev {
+        left: 5px;
+    }
+
+    .carousel-control.next {
+        right: 5px;
     }
 }
+
+@media (max-width: 480px) {
+    .carousel {
+        border-radius: 12px;
+        /* Bordes más suaves en móviles pequeños */
+    }
+
+    .carousel img {
+        max-height: 70vh;
+        /* Altura máxima más pequeña para móviles */
+    }
+
+    .carousel-control {
+        padding: 8px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .carousel-title {
+        font-size: 1.2em;
+    }
+}
+
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease;
     width: 100%;
+    height: 100%;
 }
+
 .carousel-item {
     min-width: 100%;
     transition: opacity 0.5s ease;
@@ -436,23 +518,34 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    /* importante para recortar imagenes que se salen */
 }
+
 .carousel-item.active {
     opacity: 1;
     position: relative;
 }
+
 .carousel img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    /* Llenar la altura del contenedor */
+    object-fit: cover;
+    /* cubrir totalmente el recuadro blanco */
     border-radius: 16px;
     box-shadow: none;
     border: none;
+    background: rgba(255, 255, 255, 0.05);
+    /* Fondo muy sutil */
+    display: block;
 }
+
 .carousel-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(80,217,229,0.7);
+    background: rgba(80, 217, 229, 0.7);
     border: none;
     color: #111;
     font-size: 2em;
@@ -462,15 +555,19 @@ a {
     z-index: 2;
     transition: background 0.2s;
 }
+
 .carousel-control:hover {
     background: #50D9E5;
 }
+
 .carousel-control.prev {
     left: 10px;
 }
+
 .carousel-control.next {
     right: 10px;
 }
+
 @media (max-width: 600px) {
     .carousel {
         width: 95vw;
@@ -482,13 +579,49 @@ a {
 .contacto {
     text-align: center;
     padding: 18px 12px;
-    color: #ffffff; /* texto principal en blanco para contraste sobre el fondo oscuro */
+    color: #ffffff;
+    /* texto principal en blanco para contraste sobre el fondo oscuro */
     font-size: 18px;
 }
+
 .contacto a {
-    color: #50D9E5; /* color acento consistente con la paleta del sitio */
+    color: #50D9E5;
+    /* color acento consistente con la paleta del sitio */
     text-decoration: underline;
 }
+
 .contacto a:hover {
     color: #2aa8b4;
+}
+
+/* Estilos para las credenciales */
+.credenciales {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #ffffff;
+    z-index: 100;
+    transition: opacity 0.3s ease;
+}
+
+.credenciales:hover {
+    opacity: 1;
+    background: rgba(80, 217, 229, 0.2);
+}
+
+.credenciales p {
+    margin: 0;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .credenciales {
+        font-size: 0.8em;
+        padding: 6px 10px;
+    }
 }
